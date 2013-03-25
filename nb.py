@@ -13,7 +13,7 @@ import time
 from pattern.en import number as numberParse
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + os.path.sep + os.path.pardir + os.path.sep + 'twitterbot')
-import twitterbot
+import tb
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
@@ -103,7 +103,7 @@ class App:
 		ids.sort()
 		
 		if len(ids) > 0:
-			with file('lastSearch.file', 'w') as f:
+			with file('lastSearch.record', 'w') as f:
 				f.write(str(ids[-1]))
 			
 	
@@ -115,10 +115,10 @@ class App:
 		
 
 if __name__ == '__main__':
-	theTB = twitterbot.Twitterbot('DDXKzIk54aVhnreJs9haIw', 'dANALAJBcLjTQ9xh2IGg0o44RXM9meLwzEg9JhUU')
+	theTB = tb.Twitterbot('DDXKzIk54aVhnreJs9haIw', 'dANALAJBcLjTQ9xh2IGg0o44RXM9meLwzEg9JhUU')
 	theApp = App(theTB)
-	if len(sys.argv) == 0:
-		print 'You need to provide \'post\' or \'listen\' as an argument to this script!'
+	if len(sys.argv) == 1:
+		raise IOError('You need to provide \'post\' or \'listen\' as an argument to this script!')
 	if sys.argv[1] == 'post':
 		theApp.postUpdate()
 	if sys.argv[1] == 'listen':
