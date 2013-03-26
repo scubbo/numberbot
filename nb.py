@@ -123,6 +123,6 @@ if __name__ == '__main__':
 		theApp.postUpdate()
 	if sys.argv[1] == 'listen':
 		theApp.replyMentions()
-		theApp.scanFriendTweets()
+		#theApp.scanFriendTweets()
 	if sys.argv[1] == 'makeFriends':
 		theApp.makeFriends()
