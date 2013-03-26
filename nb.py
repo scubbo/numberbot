@@ -47,6 +47,8 @@ class App:
 						randomfact = self.randomfact()
 					self.twitterBot.api.PostUpdate('@' + recip + ' ' + randomfact)
 					print '\n' + time.asctime() + ' In reply to ' + mention.text + '\n\tPosted randomfact ' + randomfact
+				else:
+					print 'Didn\'t do anything'
 	
 	def findNumber(self, text):
 		prospectiveNumber = numberParse(text)
