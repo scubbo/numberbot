@@ -28,7 +28,7 @@ class App:
 		while len(numberfact) > 140:
 			numberfact = self.randomfact()
 		self.twitterBot.api.PostUpdate(numberfact)
-		print '\n' + time.asctime() + ' Posted ' + numberfact
+		print 'numberbot posted ' + numberfact
 	
 	def postReply(self, mention):
 		recip = mention.user.screen_name
