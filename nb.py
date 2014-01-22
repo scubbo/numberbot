@@ -29,6 +29,12 @@ class App:
 			numberfact = self.randomfact()
 		self.twitterBot.api.PostUpdate(numberfact)
 		print 'numberbot posted ' + numberfact
+
+	def postUpdateTest(self):
+		numberfact = self.randomfact()
+		while len(numberfact) > 140:
+			numberfact = self.randomfact()
+		print 'numberbot test-posted ' + numberfact
 	
 	def postReply(self, mention):
 		recip = mention.user.screen_name
@@ -68,7 +74,7 @@ class App:
 		if os.path.exists('lastMention.file'):
 			with file('lastMention.file', 'r') as f:
 				lastMention = int(f.read())
-				mentions = self.twitterBot.api.GetMentions(lastMention)
+				mentions = self.twitterBot.api.GetMentions(since_id=lastMention)
 		else:
 			mentions = self.twitterBot.api.GetMentions()
 		if len(mentions) > 0:
@@ -128,3 +134,5 @@ if __name__ == '__main__':
 		#theApp.scanFriendTweets()
 	if sys.argv[1] == 'makeFriends':
 		theApp.makeFriends()
+	if sys.argv[1] == 'postTest':
+		theApp.postUpdateTest()
